@@ -89,10 +89,26 @@
 Если Вам повезло и проект успешно собрался ликуем и идем наконец спать.
 3. Но у меня например сборка не удалась. Идем в Event Log и видим нечто такое</p>
 
-<pre><code>Error running project [org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:assembly]: No valid Maven installation found. Either set the home directory in the configuration dialog or set the M2_HOME environment variable on your system.
-</code></pre>
-
 <p><code>Error running project [org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:assembly]: No valid Maven installation found. Either set the home directory in the configuration dialog or set the M2_HOME environment variable on your system.</code></p>
+
+<p>Дело в том, что Maven не идет из коробки в Mac OS X 10.9. Проверим</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mvn -version
+-bash: mvn: <span class="nb">command </span>not found</code></pre></div>
+
+<p>4. Не идет и ладно, давайте поставим. Идем на <a href="http://maven.apache.org/download.cgi">страницу загрузки Apache Maven</a> и качаем последнюю версию (на данный момент 3.2.3). Распаковываем архив (например в /Applications/apache-maven-3.2.3)</p>
+
+<p>5.Теперь, добавим в файл ~/.bash_profile следующие строки</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">M2_HOME</span><span class="o">=</span>/Applications/apache-maven-3.2.3
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$M2_HOME</span>/bin</code></pre></div>
+
+<p>Перезапустим консоль или воспользуемся компандой source .bash_profile и вновь попробуем написать mvn -version. Прекрасно, теперь у нас есть возможность использовать Maven из консоли.</p>
+
+<p>6. Давайте же дадим такую возможность нашей IDEA.<br />
+Идем IntelliJ IDEA =&gt; Preferences =&gt; Maven и в поле Maven home directory указываем путь до нашего Maven’а (/Applications/apache-maven-3.2.3). Применяем изменения и повторяем шаг номер 2. Спустя небольшой промежуток времени наблюдаем заветное BUILD SUCCESS. Результат нашего творения мы можем лицезреть в директории target нашего проекта.</p>
+
+<p>Ну вот, вроде бы и все, если не вдаваться в подробности. Более подробная и довольно понятно расписан этап сборки проекта <a href="http://www.javacreed.com/how-to-use-maven-with-an-application/">ТУТ</a>. На сегодня все, кофе уже не спасает, пора на боковую.</p>
 
 <!-- Ну, для начала, доброе утро!
 

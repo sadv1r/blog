@@ -6,8 +6,8 @@
 </description>
     <link>http://sadv1r.github.io/</link>
     <atom:link href="http://sadv1r.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 18:41:22 +0300</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 18:41:22 +0300</lastBuildDate>
+    <pubDate>Fri, 14 Aug 2015 18:53:50 +0300</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 18:53:50 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -186,10 +186,26 @@ docker pull wordpress:latest
 Если Вам повезло и проект успешно собрался ликуем и идем наконец спать.
 3. Но у меня например сборка не удалась. Идем в Event Log и видим нечто такое&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Error running project [org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:assembly]: No valid Maven installation found. Either set the home directory in the configuration dialog or set the M2_HOME environment variable on your system.
-&lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;&lt;code&gt;Error running project [org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:assembly]: No valid Maven installation found. Either set the home directory in the configuration dialog or set the M2_HOME environment variable on your system.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Дело в том, что Maven не идет из коробки в Mac OS X 10.9. Проверим&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mvn -version
+-bash: mvn: &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;not found&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;4. Не идет и ладно, давайте поставим. Идем на &lt;a href=&quot;http://maven.apache.org/download.cgi&quot;&gt;страницу загрузки Apache Maven&lt;/a&gt; и качаем последнюю версию (на данный момент 3.2.3). Распаковываем архив (например в /Applications/apache-maven-3.2.3)&lt;/p&gt;
+
+&lt;p&gt;5.Теперь, добавим в файл ~/.bash_profile следующие строки&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;M2_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/Applications/apache-maven-3.2.3
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$M2_HOME&lt;/span&gt;/bin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Перезапустим консоль или воспользуемся компандой source .bash_profile и вновь попробуем написать mvn -version. Прекрасно, теперь у нас есть возможность использовать Maven из консоли.&lt;/p&gt;
+
+&lt;p&gt;6. Давайте же дадим такую возможность нашей IDEA.&lt;br /&gt;
+Идем IntelliJ IDEA =&amp;gt; Preferences =&amp;gt; Maven и в поле Maven home directory указываем путь до нашего Maven’а (/Applications/apache-maven-3.2.3). Применяем изменения и повторяем шаг номер 2. Спустя небольшой промежуток времени наблюдаем заветное BUILD SUCCESS. Результат нашего творения мы можем лицезреть в директории target нашего проекта.&lt;/p&gt;
+
+&lt;p&gt;Ну вот, вроде бы и все, если не вдаваться в подробности. Более подробная и довольно понятно расписан этап сборки проекта &lt;a href=&quot;http://www.javacreed.com/how-to-use-maven-with-an-application/&quot;&gt;ТУТ&lt;/a&gt;. На сегодня все, кофе уже не спасает, пора на боковую.&lt;/p&gt;
 
 &lt;!-- Ну, для начала, доброе утро!
 
