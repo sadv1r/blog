@@ -4,10 +4,10 @@
     <title>Блог очередного аутиста</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://localhost/</link>
-    <atom:link href="http://localhost/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 16:07:46 +0300</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 16:07:46 +0300</lastBuildDate>
+    <link>http://sadv1r.github.io/blog/</link>
+    <atom:link href="http://sadv1r.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 14 Aug 2015 16:20:46 +0300</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 16:20:46 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -23,7 +23,7 @@
 &lt;p&gt;Хоститься я решил на приевшемся уже &lt;a href=&quot;https://www.digitalocean.com/&quot;&gt;DigitalOcean&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Логинимся, нажимаем «Create» и видим такую картину:
-&lt;img src=&quot;http://localhost/resources/img/digitalocean-select-image-wordpress-application.gif&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://sadv1r.github.io/resources/img/digitalocean-select-image-wordpress-application.gif&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve --watch&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
@@ -41,8 +41,8 @@
 
 </description>
         <pubDate>Fri, 14 Aug 2015 18:20:11 +0300</pubDate>
-        <link>http://localhost/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</link>
-        <guid isPermaLink="true">http://localhost/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</guid>
+        <link>http://sadv1r.github.io/blog/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</link>
+        <guid isPermaLink="true">http://sadv1r.github.io/blog/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</guid>
         
         
         <category>jekyll</category>
@@ -69,8 +69,8 @@
 
 </description>
         <pubDate>Fri, 14 Aug 2015 18:20:11 +0300</pubDate>
-        <link>http://localhost/jekyll/update/2015/08/14/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost/jekyll/update/2015/08/14/welcome-to-jekyll.html</guid>
+        <link>http://sadv1r.github.io/blog/jekyll/update/2015/08/14/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://sadv1r.github.io/blog/jekyll/update/2015/08/14/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
