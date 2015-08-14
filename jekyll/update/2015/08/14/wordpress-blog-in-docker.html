@@ -73,21 +73,99 @@
 <p>Хоститься я решил на приевшемся уже <a href="https://www.digitalocean.com/">DigitalOcean</a>.</p>
 
 <p>Логинимся, нажимаем «Create» и видим такую картину:
-<img src="http://sadv1r.github.io//blog/resources/img/digitalocean-select-image-wordpress-application.gif" alt="My helpful screenshot" /></p>
+<img src="/blog/resources/img/digitalocean-select-image-wordpress-application.gif" alt="DigitalOcean Select Wordpress Image" /></p>
 
-<p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve --watch</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<p>ТАК ПРОСТО? Но это ведь не интересно!</p>
 
-<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>Постойте… «Docker on Ubuntu 14.04». Вот это интереснее. Давно ведь смотрел в его сторону! Выбираем, заполняем оставшиеся поля и нажимаем «Create Droplet». Сразу скажу, я выбрал минимальный план за 5$.</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>После того, как наш Droplet создался, коннектимся к серверу и начинаем эксперименты.</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></div>
+<p>Первым делом я решил проверить версию Docker’а</p>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
+<pre><code>docker version
+
+Client version: 1.2.0
+Client API version: 1.14
+Go version (client): go1.3.1
+Git commit (client): fa7b24f
+OS/Arch (client): linux/amd64
+Server version: 1.2.0
+Server API version: 1.14
+Go version (server): go1.3.1
+Git commit (server): fa7b24f
+</code></pre>
+
+<p>Ага, как минимум это означает, что нас не обманули и Docker действительно предустановлен. Затем следовало выбрать движок для блога. Я решил не заморачиваться и выбрать один <a href="https://registry.hub.docker.com/">отсюда</a>. Делается это в терминале так:</p>
+
+<pre><code>docker search blog
+</code></pre>
+
+<p><img src="/blog/resources/img/docker-search-blog.gif" alt="Docker search blog" /></p>
+
+<p>Выбор у меня оказался простым. Я просто взял единственный блог, помеченный, как OFFICIAL. Выбрав WordPress вспоминаем, что для работы ему нужна база данных. Тащим себе WordPress вместе с MySQL (latest означает, что нам нужна только последняя версия)</p>
+
+<pre><code>docker pull mysql:latest
+docker pull wordpress:latest
+</code></pre>
+
+<p>Проверим, что мы накачали</p>
+
+<pre><code>docker images
+</code></pre>
+
+<p>Все верно, теперь мы можем попробовать запустить эти образы</p>
+
+<pre><code>docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+</code></pre>
+
+<p>Сразу оговорюсь, если вы выбрали (как и я) минимальный план DigitalOcean, то есть большая вероятность того, что база у вас не поднимется. Как это проверить?</p>
+
+<pre><code>docker ps -a
+</code></pre>
+
+<p>Смотрим на колонку STATUS. Вы должны увидеть там аптайм контейнера. Иначе там будет что-то вроде «docker Exited (1) 2 seconds ago».</p>
+
+<p>Итак, наш контейнер не поднялся, как узнать причину? А очень просто</p>
+
+<pre><code>docker logs &lt;id нашего контейнера, указанное в первом столбце выше&gt;
+</code></pre>
+
+<p>Видим нечто такое:</p>
+
+<pre><code>[ERROR] Plugin 'InnoDB' init function returned error. 131005
+[ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+[ERROR] Unknown/unsupported storage engine: InnoDB 131005
+[ERROR] Aborting
+</code></pre>
+
+<p>А вот и вышла боком нам экономия на DigitalOcean. Как исправить? <a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-12-04">Добавить Swap раздел нашему дроплету</a>.</p>
+
+<p>Замечательно, теперь все должно быть хорошо. Удалим контейнер, который не удалось поднять прошлый раз</p>
+
+<pre><code>docker rm &lt;id контейнера&gt;
+</code></pre>
+
+<p>Теперь пробуем поднять базу вновь</p>
+
+<pre><code>docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+</code></pre>
+
+<p>Проверим, как там наша база на этот раз</p>
+
+<pre><code>docker ps -a
+</code></pre>
+
+<p>В статусе заветное «Up 3 seconds», ура! Теперь поднимаем WordPress</p>
+
+<pre><code>docker run --name some-wordpress --link some-mysql:mysql -p 8080:80 -d wordpress
+</code></pre>
+
+<p>Теперь, попробовав снова вывести список контейнеров, мы увидим и контейнер some-wordpress.</p>
+
+<p>Поздравляю! Теперь заходим на <code>&lt;Droplet IP&gt;:8080</code> и видим приветственную страницу WordPress.</p>
+
+<p>Теперь можно со спокойной совестью встать с постели и идти пить чай с печеньками :3</p>
 
 
   </article>
