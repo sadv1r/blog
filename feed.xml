@@ -6,8 +6,8 @@
 </description>
     <link>http://sadv1r.github.io/</link>
     <atom:link href="http://sadv1r.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 19:53:29 +0300</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 19:53:29 +0300</lastBuildDate>
+    <pubDate>Fri, 14 Aug 2015 20:17:39 +0300</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 20:17:39 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -23,7 +23,7 @@
 &lt;p&gt;Хоститься я решил на приевшемся уже &lt;a href=&quot;https://www.digitalocean.com/&quot;&gt;DigitalOcean&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Логинимся, нажимаем «Create» и видим такую картину:
-&lt;img src=&quot;/jekyll/update/2015/08/14/wordpress-blog-in-docker.html&quot; alt=&quot;DigitalOcean Select Wordpress Image&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/resources/img/digitalocean-select-image-wordpress-application.gif&quot; alt=&quot;DigitalOcean Select Wordpress Image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ТАК ПРОСТО? Но это ведь не интересно!&lt;/p&gt;
 
@@ -235,7 +235,7 @@ docker pull wordpress:latest
 Пример:
 &lt;img src=&quot;/resources/img/ssh-keygen.gif&quot; alt=&quot;SSH keygen&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;2. Копируем публичный файл &lt;strong&gt;id_rsa.pub&lt;/strong&gt; в файл authorized_keys на сервере&lt;/p&gt;
+&lt;p&gt;2. Копируем публичный файл &lt;strong&gt;id_rsa.pub&lt;/strong&gt; в файл &lt;strong&gt;authorized_keys&lt;/strong&gt; на сервере&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;cat ~/.ssh/id_rsa.pub &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; ssh root@server-ip-address &lt;span class=&quot;s2&quot;&gt;&amp;quot;cat &amp;gt;&amp;gt; ~/.ssh/authorized_keys&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -250,7 +250,7 @@ docker pull wordpress:latest
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -i /user/.ssh/id_rsa root@server-ip-address&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;Бонусы:&lt;/h2&gt;
-&lt;p&gt;1. SSH ключ мы сгенерировали, научились авторизовываться с его помощью. Чего не хватает? Правильно, теперь нужно отключить возможность входа на сервер с помощью root пароля. Для этого нужно в файле /etc/ssh/sshd_config изменить значение всего одного параметра&lt;/p&gt;
+&lt;p&gt;1. SSH ключ мы сгенерировали, научились авторизовываться с его помощью. Чего не хватает? Правильно, теперь нужно отключить возможность входа на сервер с помощью root пароля. Для этого нужно в файле &lt;strong&gt;/etc/ssh/sshd_config&lt;/strong&gt; изменить значение всего одного параметра&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;PermitRootLogin without-password
 &lt;/code&gt;&lt;/pre&gt;

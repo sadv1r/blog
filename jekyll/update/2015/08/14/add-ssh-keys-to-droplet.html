@@ -76,7 +76,7 @@
 Пример:
 <img src="/resources/img/ssh-keygen.gif" alt="SSH keygen" /></p>
 
-<p>2. Копируем публичный файл <strong>id_rsa.pub</strong> в файл authorized_keys на сервере</p>
+<p>2. Копируем публичный файл <strong>id_rsa.pub</strong> в файл <strong>authorized_keys</strong> на сервере</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh root@server-ip-address <span class="s2">&quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;</span></code></pre></div>
 
@@ -91,7 +91,7 @@
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -i /user/.ssh/id_rsa root@server-ip-address</code></pre></div>
 
 <h2 id="section">Бонусы:</h2>
-<p>1. SSH ключ мы сгенерировали, научились авторизовываться с его помощью. Чего не хватает? Правильно, теперь нужно отключить возможность входа на сервер с помощью root пароля. Для этого нужно в файле /etc/ssh/sshd_config изменить значение всего одного параметра</p>
+<p>1. SSH ключ мы сгенерировали, научились авторизовываться с его помощью. Чего не хватает? Правильно, теперь нужно отключить возможность входа на сервер с помощью root пароля. Для этого нужно в файле <strong>/etc/ssh/sshd_config</strong> изменить значение всего одного параметра</p>
 
 <pre><code>PermitRootLogin without-password
 </code></pre>
