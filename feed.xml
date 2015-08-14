@@ -4,10 +4,10 @@
     <title>Блог очередного аутиста</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://sadv1r.github.io/blog/</link>
-    <atom:link href="http://sadv1r.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 17:32:46 +0300</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 17:32:46 +0300</lastBuildDate>
+    <link>http://sadv1r.github.io/</link>
+    <atom:link href="http://sadv1r.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 14 Aug 2015 17:37:14 +0300</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 17:37:14 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -23,7 +23,7 @@
 &lt;p&gt;Хоститься я решил на приевшемся уже &lt;a href=&quot;https://www.digitalocean.com/&quot;&gt;DigitalOcean&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Логинимся, нажимаем «Create» и видим такую картину:
-&lt;img src=&quot;/blog/resources/img/digitalocean-select-image-wordpress-application.gif&quot; alt=&quot;DigitalOcean Select Wordpress Image&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/resources/img/digitalocean-select-image-wordpress-application.gif&quot; alt=&quot;DigitalOcean Select Wordpress Image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ТАК ПРОСТО? Но это ведь не интересно!&lt;/p&gt;
 
@@ -51,7 +51,7 @@ Git commit (server): fa7b24f
 &lt;pre&gt;&lt;code&gt;docker search blog
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/resources/img/docker-search-blog.gif&quot; alt=&quot;Docker search blog&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/resources/img/docker-search-blog.gif&quot; alt=&quot;Docker search blog&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Выбор у меня оказался простым. Я просто взял единственный блог, помеченный, как OFFICIAL. Выбрав WordPress вспоминаем, что для работы ему нужна база данных. Тащим себе WordPress вместе с MySQL (latest означает, что нам нужна только последняя версия)&lt;/p&gt;
 
@@ -119,8 +119,8 @@ docker pull wordpress:latest
 
 </description>
         <pubDate>Fri, 14 Aug 2015 18:20:11 +0300</pubDate>
-        <link>http://sadv1r.github.io/blog/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</link>
-        <guid isPermaLink="true">http://sadv1r.github.io/blog/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</guid>
+        <link>http://sadv1r.github.io/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</link>
+        <guid isPermaLink="true">http://sadv1r.github.io/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</guid>
         
         
         <category>jekyll</category>
@@ -147,8 +147,8 @@ docker pull wordpress:latest
 
 </description>
         <pubDate>Fri, 14 Aug 2015 18:20:11 +0300</pubDate>
-        <link>http://sadv1r.github.io/blog/jekyll/update/2015/08/14/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://sadv1r.github.io/blog/jekyll/update/2015/08/14/welcome-to-jekyll.html</guid>
+        <link>http://sadv1r.github.io/jekyll/update/2015/08/14/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://sadv1r.github.io/jekyll/update/2015/08/14/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
