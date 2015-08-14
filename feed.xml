@@ -6,8 +6,8 @@
 </description>
     <link>http://sadv1r.github.io/</link>
     <atom:link href="http://sadv1r.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 19:52:18 +0300</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 19:52:18 +0300</lastBuildDate>
+    <pubDate>Fri, 14 Aug 2015 19:53:29 +0300</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 19:53:29 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -220,7 +220,7 @@ docker pull wordpress:latest
       </item>
     
       <item>
-        <title>Сборка Maven проекта в IntelliJ IDEA»</title>
+        <title>Лень берет верх или «Как добавить SSH ключи к существующему дроплету?»</title>
         <description>&lt;p&gt;Сегодня, уже не таким ранним как &lt;a href=&quot;/jekyll/update/2015/08/14/wordpress-blog-in-docker.html&quot;&gt;это&lt;/a&gt;, но всеже утром, понадобилось мне добавить SSH ключи к одному из существующих &lt;a href=&quot;https://www.digitalocean.com/&quot;&gt;DigitalOcean&lt;/a&gt; дроплетов. Все дело в том,  что вчера вечером мне пришлось несколько раз подряд заходить и снова выходить на сервер, а так как пароли у нас – как у больших, их ввод мне изрядно надоел, по этому я решил добавить SSH ключ. На сколько я понял, если Вы уже добавили ключ в панели управления, то к созданному дроплету можно будет подключиться с его помощью. Но что делать, если дроплет уже создан? Никаких проблем, это довольно быстро и делается за пару минут.&lt;/p&gt;
 
 &lt;p&gt;1. Генерируем новую пару ключей (публичный и приватный) на вашей машине&lt;/p&gt;
