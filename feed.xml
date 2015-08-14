@@ -6,8 +6,8 @@
 </description>
     <link>http://sadv1r.github.io/</link>
     <atom:link href="http://sadv1r.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 20:17:39 +0300</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 20:17:39 +0300</lastBuildDate>
+    <pubDate>Fri, 14 Aug 2015 20:21:55 +0300</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 20:21:55 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -121,6 +121,12 @@ docker pull wordpress:latest
         <pubDate>Fri, 14 Aug 2015 18:20:11 +0300</pubDate>
         <link>http://sadv1r.github.io/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</link>
         <guid isPermaLink="true">http://sadv1r.github.io/jekyll/update/2015/08/14/wordpress-blog-in-docker.html</guid>
+        
+        <category>DigitalOcean</category>
+        
+        <category>Wordpress</category>
+        
+        <category>Docker</category>
         
         
         <category>jekyll</category>
