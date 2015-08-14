@@ -11,7 +11,7 @@
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://sadv1r.github.io/jekyll/update/2015/08/14/maven-assembly.html">
+    <link rel="canonical" href="http://sadv1r.github.io/jekyll/update/2015/08/14/add-ssh-keys-to-droplet.html">
 </head>
 
 
@@ -62,54 +62,64 @@
   </header>
 
   <article class="post-content">
-    <p><img src="/resources/img/maven-mug-black.jpg" alt="Maven mug Black" /></p>
+    <p>Сегодня, уже не таким ранним как <a href="/jekyll/update/2015/08/14/wordpress-blog-in-docker.html">это</a>, но всеже утром, понадобилось мне добавить SSH ключи к одному из существующих <a href="https://www.digitalocean.com/">DigitalOcean</a> дроплетов. Все дело в том,  что вчера вечером мне пришлось несколько раз подряд заходить и снова выходить на сервер, а так как пароли у нас – как у больших, их ввод мне изрядно надоел, по этому я решил добавить SSH ключ. На сколько я понял, если Вы уже добавили ключ в панели управления, то к созданному дроплету можно будет подключиться с его помощью. Но что делать, если дроплет уже создан? Никаких проблем, это довольно быстро и делается за пару минут.</p>
 
-<p>Добрый вечер! Вернее уже ночь, но я обещал написать этот пост, по этому пью вторую кружку кофе и продолжаю стучать по клавиатуре. Данный пост будет посвящен простейшей настройке билда проекта с помощью <a href="http://maven.apache.org/">Maven</a>. Так как время позднее, приступим от слов к делу.</p>
+<p>1. Генерируем новую пару ключей (публичный и приватный) на вашей машине</p>
 
-<p>1. Для начала откроем наш pom.xml файл и добавим буквально несколько строк</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -C <span class="s2">&quot;your@mail.com&quot;</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;build&gt;</span>
-    <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
-            <span class="nt">&lt;configuration&gt;</span>
-                <span class="nt">&lt;archive&gt;</span>
-                    <span class="nt">&lt;manifest&gt;</span>
-                        <span class="nt">&lt;mainClass&gt;</span>Main<span class="nt">&lt;/mainClass&gt;</span>
-                    <span class="nt">&lt;/manifest&gt;</span>
-                <span class="nt">&lt;/archive&gt;</span>
-            <span class="nt">&lt;/configuration&gt;</span>
-        <span class="nt">&lt;/plugin&gt;</span>
-    <span class="nt">&lt;/plugins&gt;</span>
-<span class="nt">&lt;/build&gt;</span></code></pre></div>
+<p>После ввода команды нужно будет ответить на несколько вопросов<br />
+<code>Enter file in which to save the key (/user/.ssh/id_rsa):</code><br />
+Вы можете нажать Enter и оставить дефолтный путь. Следующим будет вопрос о проверочной фразе<br />
+<code>Enter passphrase (empty for no passphrase):</code><br />
+Ее потребуется вводить при использовании ключа во время подключения. Вы также можете отказаться от ее использования, просто нажав Enter.
+Пример:
+<img src="/resources/img/ssh-keygen.gif" alt="SSH keygen" /></p>
 
-<p>В случае, если Main класс у Вас называется по другому, просто измените 8 строку:)  </p>
+<p>2. Копируем публичный файл <strong>id_rsa.pub</strong> в файл authorized_keys на сервере</p>
 
-<p>2. Теперь в <a href="http://www.jetbrains.com/idea/">IDEA</a>  нажимаем Maven Projects =&gt; наш проект =&gt; Plugins =&gt; assembly =&gt; assembly:assembly (дважды, либо правой кнопкой — Run Maven Build)
-Если Вам повезло и проект успешно собрался ликуем и идем наконец спать.
-3. Но у меня например сборка не удалась. Идем в Event Log и видим нечто такое</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh root@server-ip-address <span class="s2">&quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;</span></code></pre></div>
 
-<p><code>Error running project [org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:assembly]: No valid Maven installation found. Either set the home directory in the configuration dialog or set the M2_HOME environment variable on your system.</code></p>
+<p>По запросу введем пароль пользователя root.</p>
 
-<p>Дело в том, что Maven не идет из коробки в Mac OS X 10.9. Проверим</p>
+<p>Теперь подключиться к серверу стало на порядок проще</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mvn -version
--bash: mvn: <span class="nb">command </span>not found</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh root@server-ip-address</code></pre></div>
 
-<p>4. Не идет и ладно, давайте поставим. Идем на <a href="http://maven.apache.org/download.cgi">страницу загрузки Apache Maven</a> и качаем последнюю версию (на данный момент 3.2.3). Распаковываем архив (например в /Applications/apache-maven-3.2.3)</p>
+<p>Чтобы явно указать, какой ключ следует использовать при подключении можно воспользоваться флагом -i</p>
 
-<p>5.Теперь, добавим в файл ~/.bash_profile следующие строки</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -i /user/.ssh/id_rsa root@server-ip-address</code></pre></div>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">M2_HOME</span><span class="o">=</span>/Applications/apache-maven-3.2.3
-<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$M2_HOME</span>/bin</code></pre></div>
+<h2 id="section">Бонусы:</h2>
+<p>1. SSH ключ мы сгенерировали, научились авторизовываться с его помощью. Чего не хватает? Правильно, теперь нужно отключить возможность входа на сервер с помощью root пароля. Для этого нужно в файле /etc/ssh/sshd_config изменить значение всего одного параметра</p>
 
-<p>Перезапустим консоль или воспользуемся компандой source .bash_profile и вновь попробуем написать mvn -version. Прекрасно, теперь у нас есть возможность использовать Maven из консоли.</p>
+<pre><code>PermitRootLogin without-password
+</code></pre>
 
-<p>6. Давайте же дадим такую возможность нашей IDEA.<br />
-Идем IntelliJ IDEA =&gt; Preferences =&gt; Maven и в поле Maven home directory указываем путь до нашего Maven’а (/Applications/apache-maven-3.2.3). Применяем изменения и повторяем шаг номер 2. Спустя небольшой промежуток времени наблюдаем заветное BUILD SUCCESS. Результат нашего творения мы можем лицезреть в директории target нашего проекта.</p>
+<p>Теперь перезапускаем sshd процесс</p>
 
-<p>Ну вот, вроде бы и все, если не вдаваться в подробности. Более подробная и довольно понятно расписан этап сборки проекта <a href="http://www.javacreed.com/how-to-use-maven-with-an-application/">ТУТ</a>. На сегодня все, кофе уже не спасает, пора на боковую.</p>
+<pre><code>ps auxw | grep ssh
+USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND
+root 915 0.0 0.1 43748 1043 ? Ss Sep3 0:32 /usr/sbin/sshd -D
 
+kill -HUP 915
+</code></pre>
+
+<p>Все, теперь при попытки подключения к серверу без ssh ключей, Вы будете автоматически выдворены без предложения ввести пароль.
+P.S. Если Вы решите вновь разрешить вход по паролю, измените значение <strong>PermitRootLogin</strong> на <strong>yes</strong>.</p>
+
+<p>2. Если Вы столь же ленивы, как я, Вы можете укоротить команду логина по SSH подредактировав <strong>config</strong> файл в <strong>/user/.ssh/</strong></p>
+
+<pre><code>Host ssh-alias
+    HostName server-ip-address 
+    User root
+    IdentityFile "~/.ssh/id_rsa"
+</code></pre>
+
+<p>Теперь, заходим на сервер с помощью команды</p>
+
+<pre><code>ssh ssh-alias
+</code></pre>
 
   </article>
 
