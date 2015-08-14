@@ -6,8 +6,8 @@
 </description>
     <link>http://sadv1r.github.io/</link>
     <atom:link href="http://sadv1r.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 17:37:14 +0300</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 17:37:14 +0300</lastBuildDate>
+    <pubDate>Fri, 14 Aug 2015 18:41:22 +0300</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 18:41:22 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -149,6 +149,146 @@ docker pull wordpress:latest
         <pubDate>Fri, 14 Aug 2015 18:20:11 +0300</pubDate>
         <link>http://sadv1r.github.io/jekyll/update/2015/08/14/welcome-to-jekyll.html</link>
         <guid isPermaLink="true">http://sadv1r.github.io/jekyll/update/2015/08/14/welcome-to-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Сборка Maven проекта в IntelliJ IDEA»</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/resources/img/maven-mug-black.jpg&quot; alt=&quot;Maven mug Black&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Добрый вечер! Вернее уже ночь, но я обещал написать этот пост, по этому пью вторую кружку кофе и продолжаю стучать по клавиатуре. Данный пост будет посвящен простейшей настройке билда проекта с помощью &lt;a href=&quot;http://maven.apache.org/&quot;&gt;Maven&lt;/a&gt;. Так как время позднее, приступим от слов к делу.&lt;/p&gt;
+
+&lt;p&gt;1. Для начала откроем наш pom.xml файл и добавим буквально несколько строк&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-assembly-plugin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;archive&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;manifest&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;mainClass&amp;gt;&lt;/span&gt;Main&lt;span class=&quot;nt&quot;&gt;&amp;lt;/mainClass&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/manifest&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/archive&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;В случае, если Main класс у Вас называется по другому, просто измените 8 строку:)  &lt;/p&gt;
+
+&lt;p&gt;2. Теперь в &lt;a href=&quot;http://www.jetbrains.com/idea/&quot;&gt;IDEA&lt;/a&gt;  нажимаем Maven Projects =&amp;gt; наш проект =&amp;gt; Plugins =&amp;gt; assembly =&amp;gt; assembly:assembly (дважды, либо правой кнопкой — Run Maven Build)
+Если Вам повезло и проект успешно собрался ликуем и идем наконец спать.
+3. Но у меня например сборка не удалась. Идем в Event Log и видим нечто такое&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Error running project [org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:assembly]: No valid Maven installation found. Either set the home directory in the configuration dialog or set the M2_HOME environment variable on your system.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Error running project [org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:assembly]: No valid Maven installation found. Either set the home directory in the configuration dialog or set the M2_HOME environment variable on your system.&lt;/code&gt;&lt;/p&gt;
+
+&lt;!-- Ну, для начала, доброе утро!
+
+Просыпаюсь сегодня, смотрю на часы и понимаю, что слишком рано вчера лег спать. Ну лежу я, значит, такой, плюю в потолок и думаю: код писать рано, мозги не проснулись еще, болтать не с кем (НОРМАЛЬНЫЕ ЛЮДИ ЕЩЕ СПЯТ), а в подписках на YouTube нет ни одного интересного ролика. Думаю… Диалоги вести не с кем, значит нужно «помоноложить». А где моноложить? Опять проблема. Ну, значит пришло, наконец, время поднять еще один нудный блог. Сказано — сделано!
+
+Долго думать о чем написать не пришлось, идея подала идею, так что под катом разместилась статья о том, как поднять свой блог, да чтоб повеселей…
+
+
+Итак, задачу поставили, поднять личный блог. Далее что требуется? Выбрать движок, хостинг и прочие скучные вещи.
+
+Хоститься я решил на приевшемся уже [DigitalOcean](https://www.digitalocean.com/).
+
+Логинимся, нажимаем «Create» и видим такую картину:
+![DigitalOcean Select Wordpress Image](/resources/img/digitalocean-select-image-wordpress-application.gif)
+
+ТАК ПРОСТО? Но это ведь не интересно!
+
+Постойте… «Docker on Ubuntu 14.04». Вот это интереснее. Давно ведь смотрел в его сторону! Выбираем, заполняем оставшиеся поля и нажимаем «Create Droplet». Сразу скажу, я выбрал минимальный план за 5$.
+
+После того, как наш Droplet создался, коннектимся к серверу и начинаем эксперименты.
+
+Первым делом я решил проверить версию Docker’а
+
+	docker version
+
+	Client version: 1.2.0
+	Client API version: 1.14
+	Go version (client): go1.3.1
+	Git commit (client): fa7b24f
+	OS/Arch (client): linux/amd64
+	Server version: 1.2.0
+	Server API version: 1.14
+	Go version (server): go1.3.1
+	Git commit (server): fa7b24f
+
+Ага, как минимум это означает, что нас не обманули и Docker действительно предустановлен. Затем следовало выбрать движок для блога. Я решил не заморачиваться и выбрать один [отсюда](https://registry.hub.docker.com/). Делается это в терминале так:
+
+	docker search blog
+
+![Docker search blog](/resources/img/docker-search-blog.gif)
+
+Выбор у меня оказался простым. Я просто взял единственный блог, помеченный, как OFFICIAL. Выбрав WordPress вспоминаем, что для работы ему нужна база данных. Тащим себе WordPress вместе с MySQL (latest означает, что нам нужна только последняя версия)
+
+	docker pull mysql:latest
+	docker pull wordpress:latest
+
+Проверим, что мы накачали
+
+	docker images
+
+Все верно, теперь мы можем попробовать запустить эти образы
+
+	docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+
+Сразу оговорюсь, если вы выбрали (как и я) минимальный план DigitalOcean, то есть большая вероятность того, что база у вас не поднимется. Как это проверить?
+
+	docker ps -a
+
+Смотрим на колонку STATUS. Вы должны увидеть там аптайм контейнера. Иначе там будет что-то вроде «docker Exited (1) 2 seconds ago».
+
+Итак, наш контейнер не поднялся, как узнать причину? А очень просто
+
+	docker logs &lt;id нашего контейнера, указанное в первом столбце выше&gt;
+
+Видим нечто такое:
+
+	[ERROR] Plugin &#39;InnoDB&#39; init function returned error. 131005
+	[ERROR] Plugin &#39;InnoDB&#39; registration as a STORAGE ENGINE failed.
+	[ERROR] Unknown/unsupported storage engine: InnoDB 131005
+	[ERROR] Aborting
+
+А вот и вышла боком нам экономия на DigitalOcean. Как исправить? [Добавить Swap раздел нашему дроплету](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-12-04).
+
+Замечательно, теперь все должно быть хорошо. Удалим контейнер, который не удалось поднять прошлый раз
+
+	docker rm &lt;id контейнера&gt;
+
+Теперь пробуем поднять базу вновь
+
+	docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+
+Проверим, как там наша база на этот раз
+
+	docker ps -a
+
+В статусе заветное «Up 3 seconds», ура! Теперь поднимаем WordPress
+
+	docker run --name some-wordpress --link some-mysql:mysql -p 8080:80 -d wordpress
+
+Теперь, попробовав снова вывести список контейнеров, мы увидим и контейнер some-wordpress.
+
+Поздравляю! Теперь заходим на `&lt;Droplet IP&gt;:8080` и видим приветственную страницу WordPress.
+
+Теперь можно со спокойной совестью встать с постели и идти пить чай с печеньками :3 --&gt;
+
+</description>
+        <pubDate>Fri, 14 Aug 2015 18:20:11 +0300</pubDate>
+        <link>http://sadv1r.github.io/jekyll/update/2015/08/14/maven-assembly.html</link>
+        <guid isPermaLink="true">http://sadv1r.github.io/jekyll/update/2015/08/14/maven-assembly.html</guid>
         
         
         <category>jekyll</category>
