@@ -6,17 +6,17 @@
 </description>
     <link>http://sadv1r.github.io/</link>
     <atom:link href="http://sadv1r.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 15 Aug 2015 13:19:30 +0300</pubDate>
-    <lastBuildDate>Sat, 15 Aug 2015 13:19:30 +0300</lastBuildDate>
+    <pubDate>Sat, 15 Aug 2015 13:21:24 +0300</pubDate>
+    <lastBuildDate>Sat, 15 Aug 2015 13:21:24 +0300</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
         <title>Поднимаем блог на GitHub Pages</title>
         <description>&lt;p&gt;Случилось это вечером. Я внезапно понял, что Wordpress – слишком громоздкий трактор, для моего скромного блога. Вернее, об этом я и раньше знал, но что-то менять было лень. И вот, этот день настал.
-В качестве хостинга был выбран &lt;a href=&quot;https://pages.github.com&quot;&gt;GitHub Pages&lt;/a&gt;, а в качестве генератора статического контента – &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;.
-Установка Jekyll
-—————-
-Для того, чтобы иметь возможность просматривать свой блог до публикации на GitHub Pages, необходимо установить Jekyll.&lt;/p&gt;
+В качестве хостинга был выбран &lt;a href=&quot;https://pages.github.com&quot;&gt;GitHub Pages&lt;/a&gt;, а в качестве генератора статического контента – &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;Установка Jekyll&lt;/h2&gt;
+&lt;p&gt;Для того, чтобы иметь возможность просматривать свой блог до публикации на GitHub Pages, необходимо установить Jekyll.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 14 Aug 2015 23:23:15 +0300</pubDate>
